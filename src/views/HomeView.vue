@@ -1,71 +1,123 @@
-<script lang="js"></script>
+﻿<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+import { RouterLink } from 'vue-router'
+
+const showIntroduction = ref(false)
+let timeoutId = null
+
+onMounted(() => {
+  timeoutId = setTimeout(() => {
+    showIntroduction.value = true
+  }, 4000)
+})
+
+onUnmounted(() => {
+  clearTimeout(timeoutId)
+})
+</script>
+
 <template>
-  <div class="home-view">
-    <div class="round">
-      <img class="profile-image" src="@/assets/images/Bild.jpg" alt="Kaplan" />
-    </div>
-    <div class="info-container">
-      <div class="blank"></div>
-      <div class="info-content">
-        <h1>Welcome to the Home View</h1>
-        <p>This is the content for the home page.</p>
+  <div class="intro">
+    <Transition name="fade-slide" mode="out-in">
+      <div v-if="showIntroduction" key="introduction" class="text-content">
+        <p class="name">Ömer Kaplan</p>
+        <p class="author">Full-Stack Developer</p>
       </div>
-    </div>
+      <div v-else key="quote" class="text-content">
+        <p>Es ist nicht genug zu wissen, man muss auch anwenden.</p>
+        <p class="author">Johann Wolfgang von Goethe</p>
+        <span class="quotation-mark">"</span>
+      </div>
+    </Transition>
   </div>
+  <Transition name="fade-slide">
+    <RouterLink v-if="showIntroduction" to="/about" class="btn about-btn">
+      Über mich &nbsp; →
+    </RouterLink>
+  </Transition>
 </template>
 
 <style scoped>
-.home-view {
+.intro {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  min-height: 100vh;
+  align-items: flex-end;
 }
-.home-view .round {
-  width: 60rem;
-  height: 100vh;
-  border-radius: 50%;
-  background-color: #010a0f;
+
+.text-content {
+  width: 100%;
+  margin-top: 7rem;
   margin-right: 2rem;
-  left: 0;
-  top: 0;
-  position: absolute;
-  transform: translateX(-50%);
-  z-index: 0;
-  display: flex;
-  align-items: center;
-  justify-content: right;
+  font-size: 4rem;
+  text-align: left;
 }
 
-.profile-image {
-  width: 20rem;
-  height: 20rem;
-  object-fit: cover;
-  border-radius: 50%;
-  z-index: 1;
-  transform: translateX(-25%);
+.quotation-mark,
+.name {
+  font-weight: bold;
 }
 
-.info-container {
-  margin-top: 6rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 2rem;
-  background-color: #f5f5f525;
-  min-width: 60%;
-  width: 100%;
-  height: 100vh;
+.quotation-mark {
+  font-size: 16rem;
 }
-.info-container .blank {
-  width: 50rem;
-  height: 10rem;
-}
-.info-container .info-content {
-  padding: 2rem;
 
-  min-width: 60%;
-  width: 100%;
-  height: 100vh;
+.name {
+  font-size: 6rem;
+}
+
+.author {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.about-btn {
+  width: 12rem;
+  height: 4rem;
+  margin-top: 2rem;
+  border-color: #f5f5f525;
+}
+
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+@media (max-width: 1120px) {
+  .text-content {
+    margin-top: 2rem;
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .quotation-mark {
+    font-size: 9.5rem;
+  }
+
+  .name {
+    font-size: 4rem;
+    text-align: center;
+  }
+
+  .author {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+
+  .about-btn {
+    align-self: center;
+  }
 }
 </style>

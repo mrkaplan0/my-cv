@@ -4,6 +4,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import * as THREE from 'three'
 import WAVES from 'vanta/src/vanta.waves.js'
 import AppHeader from './components/AppHeader.vue'
+import AppLayout from './layouts/AppLayout.vue'
 
 const vantaRef = ref(null)
 let vantaInstance = null
@@ -40,7 +41,9 @@ onUnmounted(() => {
     <div class="page-content">
       <AppHeader />
       <main>
-        <RouterView />
+        <AppLayout>
+          <RouterView />
+        </AppLayout>
       </main>
     </div>
   </div>

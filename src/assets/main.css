@@ -1,7 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap');
 @import './base.css';
 
 #app {
   width: 100%;
   min-height: 100vh;
+  font-family: 'Stack Sans Text', sans-serif;
   font-weight: normal;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1rem 1rem 1rem;
+  background-color: var(--color-background-soft);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.25rem;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--color-background-mute);
+  color: var(--color-heading);
+  border-color: var(--color-border-hover);
 }

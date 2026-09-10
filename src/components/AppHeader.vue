@@ -1,10 +1,10 @@
+<script setup>
+import ProfilePhoto from '@/components/ProfilePhoto.vue'
+</script>
+
 <template>
   <header>
-    <h1 class="name">Ömer Kaplan</h1>
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-    </nav>
+    <ProfilePhoto class="photo" />
   </header>
 </template>
 
@@ -17,7 +17,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  align-items: center;
+  align-items: end;
   margin-bottom: 1rem;
   padding-right: 1rem;
   z-index: 1000;
@@ -26,7 +26,7 @@ header {
 .name {
   font-size: 4rem;
   font-weight: bold;
-  align-items: center;
+  align-items: end;
   margin: auto;
 }
 
@@ -46,5 +46,33 @@ nav a:hover {
 }
 nav a.router-link-exact-active {
   text-decoration: underline;
+}
+
+.photo {
+  display: none;
+}
+
+@media (max-width: 1120px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .name {
+    display: none;
+  }
+  nav {
+    gap: 0.5rem;
+  }
+  .photo {
+    width: 6rem;
+    height: 6rem;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1rem;
+  }
 }
 </style>
