@@ -1,0 +1,126 @@
+{
+  "personal_information": {
+    "first_name": "Ömer",
+    "last_name": "Kaplan",
+    "job_title": "Fachinformatiker Anwendungsentwicklung",
+    "address": {
+      "street": "Hauptstr. 30/1",
+      "postal_code": "74385",
+      "city": "Pleidelsheim",
+      "country": "Deutschland"
+    },
+    "phone": "017642971154",
+    "email": "mrkaplan.dev@gmail.com"
+  },
+  "profile": {
+    "summary": "Full-Stack Softwareentwickler mit praktischer Erfahrung in produktiven Kundenprojekten. Spezialisiert auf Vue.js, Laravel, Flutter und SwiftUI. Entwicklung kompletter Web-, macOS- und iOS-Lösungen inklusive Deployment. Ausgezeichnetes Arbeitszeugnis mit Bewertung 'stets zu unserer vollsten Zufriedenheit' sowie ausdrücklicher Übernahmeempfehlung."
+  },
+  "technical_expertise": {
+    "programming_languages": ["PHP", "Python", "Java", "JavaScript", "Dart", "Swift", "SQL"],
+    "frontend_and_mobile": ["Vue.js", "HTML5", "XML", "CSS3", "Flutter", "SwiftUI"],
+    "backend_and_frameworks": ["Laravel", "Django"],
+    "databases_and_services": ["SQL-Datenbanken", "Firebase"],
+    "tools_and_platforms": ["Git", "GitHub", "Docker", "Figma"],
+    "development_methodologies": ["Agile Softwareentwicklung", "Wasserfallmodell"]
+  },
+  "work_experience": [
+    {
+      "start_date": "2025-10",
+      "end_date": "2026-07",
+      "position": "Full-Stack Softwareentwickler - Praktikant",
+      "company": "condero AG",
+      "location": "Heilbronn",
+      "description": "Verantwortung für interne sowie kundenorientierte Softwareprojekte im Web- und Apple-Ökosystem.",
+      "responsibilities": [
+        "Eigenverantwortliche Entwicklung eines Vue.js-Kundenprojekts",
+        "Backend-Entwicklung mit Laravel-Framework",
+        "Entwicklung der kompletten Domain-Management-Webanwendung mit Vue.js",
+        "Entwicklung einer macOS-Menüleisten-App mit SwiftUI für ein Cloud-Telefonsystem",
+        "Entwicklung der iOS-App inklusive CarPlay- und Siri-Integration"
+      ],
+      "technologies": ["Vue.js", "Laravel", "SwiftUI", "iOS", "macOS", "CarPlay", "Siri"]
+    },
+    {
+      "start_date": "2016-11",
+      "end_date": "2024-07",
+      "position": "Berufliche Neuorientierung",
+      "location": "Türkei / Deutschland",
+      "description": "Selbststudium der Softwareentwicklung mit Schwerpunkt Flutter, Dart und moderne Webtechnologien.",
+      "technologies": ["Flutter", "Dart", "HTML5", "CSS3"]
+    },
+    {
+      "start_date": "2013-07",
+      "end_date": "2016-11",
+      "position": "Abteilungsleiter",
+      "company": "Innenministerium",
+      "location": "Sakarya, Türkei",
+      "description": "Leitung einer Abteilung zur Bekämpfung von Wirtschaftskriminalität."
+    }
+  ],
+  "education": [
+    {
+      "degree": "Umschulung zum Fachinformatiker Anwendungsentwicklung (IHK)",
+      "institution": "GFN GmbH",
+      "location": "Heilbronn",
+      "start_year": 2024,
+      "end_year": 2026
+    },
+    {
+      "degree": "Bachelor",
+      "field_of_study": "Internationale Beziehungen",
+      "institution": "Anadolu Universität",
+      "location": "Eskisehir, Türkei",
+      "start_year": 2013,
+      "end_year": 2018
+    },
+    {
+      "degree": "Bachelor",
+      "field_of_study": "Sicherheitswissenschaften",
+      "institution": "Polizei Akademie",
+      "location": "Ankara, Türkei",
+      "start_year": 2009,
+      "end_year": 2013
+    }
+  ],
+  "certifications": [
+    {
+      "name": "PCEP - Certified Entry-Level Python Programmer",
+      "issuer": "Python Institute",
+      "year": 2025
+    },
+    {
+      "name": "HTML, CSS & JavaScript",
+      "issuer": "Udemy",
+      "year": 2024
+    },
+    {
+      "name": "Django, Docker & Nginx",
+      "issuer": "Udemy",
+      "year": 2024
+    },
+    {
+      "name": "Swift",
+      "issuer": "Udemy",
+      "year": 2023
+    },
+    {
+      "name": "Flutter - Dart",
+      "issuer": "Udemy",
+      "year": 2020
+    }
+  ],
+  "languages": [
+    {
+      "language": "Türkisch",
+      "level": "C2"
+    },
+    {
+      "language": "Deutsch",
+      "level": "B2"
+    },
+    {
+      "language": "Englisch",
+      "level": "B2"
+    }
+  ]
+}

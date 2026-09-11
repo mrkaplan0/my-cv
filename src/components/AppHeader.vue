@@ -5,6 +5,7 @@ import ProfilePhoto from '@/components/ProfilePhoto.vue'
 <template>
   <header>
     <ProfilePhoto class="photo" />
+    <div id="header-title"></div>
   </header>
 </template>
 
@@ -16,18 +17,10 @@ header {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  align-items: end;
-  margin-bottom: 1rem;
-  padding-right: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: 1.25rem 1rem 1rem 1rem;
   z-index: 1000;
-}
-
-.name {
-  font-size: 4rem;
-  font-weight: bold;
-  align-items: end;
-  margin: auto;
 }
 
 nav {
@@ -54,7 +47,6 @@ nav a.router-link-exact-active {
 
 @media (max-width: 1120px) {
   header {
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 2rem;

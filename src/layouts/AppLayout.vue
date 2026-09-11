@@ -1,4 +1,4 @@
-<script setup>
+﻿<script setup>
 import ProfilePhoto from '@/components/ProfilePhoto.vue'
 </script>
 
@@ -16,7 +16,7 @@ import ProfilePhoto from '@/components/ProfilePhoto.vue'
 <style scoped>
 .app-layout {
   display: flex;
-  height: 90vh;
+  min-height: 90vh;
 }
 
 .info-container {

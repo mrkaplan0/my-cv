@@ -40,7 +40,6 @@ onUnmounted(() => {
 <style scoped>
 .intro {
   display: flex;
-  align-items: flex-end;
 }
 
 .text-content {
@@ -75,7 +74,6 @@ onUnmounted(() => {
   width: 12rem;
   height: 4rem;
   margin-top: 2rem;
-  border-color: #f5f5f525;
 }
 
 .fade-slide-enter-active,
