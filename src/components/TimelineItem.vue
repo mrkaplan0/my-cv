@@ -39,8 +39,6 @@ defineProps({
   place-items: center;
   width: 40px;
   height: 40px;
-  border: 2px dashed #f5f5f525;
-  border-radius: 10px;
   transform: translate(-50%, -50%);
 }
 

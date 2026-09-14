@@ -65,7 +65,7 @@ onBeforeUnmount(() => observer?.disconnect())
 
 <template>
   <Teleport to="#header-title" defer>
-    <h1 class="page-title">Technische Expertise</h1>
+    <h1 class="page-title">Immer weiter lernen.</h1>
   </Teleport>
 
   <div ref="pageRef" class="technics-page" :aria-busy="isLoading">
@@ -99,7 +99,7 @@ onBeforeUnmount(() => observer?.disconnect())
 
     <section v-if="categories.length" aria-labelledby="skills-heading" class="skills-section">
       <div class="section-heading">
-        <h2 id="skills-heading">Der Stack</h2>
+        <h2 id="skills-heading">Technische Expertise</h2>
         <span>01 / KOMPETENZEN</span>
       </div>
       <div class="skill-grid">
@@ -158,7 +158,7 @@ onBeforeUnmount(() => observer?.disconnect())
     </p>
 
     <div class="spacer" aria-hidden="true"></div>
-    <RouterLink to="/technicalexpertise" class="btn project-btn"> Projekte &nbsp; → </RouterLink>
+    <RouterLink to="/projects" class="btn project-btn"> Projekte &nbsp; → </RouterLink>
     <div class="spacer" aria-hidden="true"></div>
   </div>
 </template>

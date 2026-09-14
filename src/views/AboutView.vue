@@ -145,11 +145,13 @@ onBeforeUnmount(() => {
 
 .box {
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   z-index: 10;
+  border: 1px solid rgba(187, 221, 232, 0.39);
   border-radius: 10px;
-  background: url('https://assets.codepen.io/16327/flair-26.png') center / contain no-repeat;
+  background-color: var(--color-background-soft);
+
   pointer-events: none;
 }
 

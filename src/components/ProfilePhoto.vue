@@ -16,7 +16,7 @@
   top: 0;
   position: absolute;
   transform: translateX(-50%);
-  z-index: 0;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: right;

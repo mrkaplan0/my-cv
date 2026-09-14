@@ -8,7 +8,7 @@ let timeoutId = null
 onMounted(() => {
   timeoutId = setTimeout(() => {
     showIntroduction.value = true
-  }, 4000)
+  }, 3000)
 })
 
 onUnmounted(() => {
