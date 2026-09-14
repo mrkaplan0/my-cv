@@ -123,7 +123,9 @@ onBeforeUnmount(() => {
       </TimelineItem>
     </div>
     <div class="spacer" aria-hidden="true"></div>
-    <RouterLink to="/about" class="btn exp-btn"> Technische Expertise &nbsp; → </RouterLink>
+    <RouterLink to="/technicalexpertise" class="btn exp-btn">
+      Technische Expertise &nbsp; →
+    </RouterLink>
     <div class="spacer" aria-hidden="true"></div>
   </div>
 </template>
