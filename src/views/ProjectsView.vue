@@ -19,6 +19,60 @@ const canNext = ref(false)
 const controller = new AbortController()
 const pending = new Set()
 let resizeObserver
+let drag = null
+let suppressClick = false
+
+function startDrag(event) {
+  const slider = sliderRef.value
+  if (event.pointerType !== 'mouse' || event.button !== 0 || !slider) return
+  // Leave the native scrollbar and touch scrolling to the browser.
+  if (event.clientY >= slider.getBoundingClientRect().top + slider.clientHeight) return
+  suppressClick = false
+  drag = { pointerId: event.pointerId, startX: event.clientX, scrollLeft: slider.scrollLeft }
+  window.addEventListener('pointermove', moveDrag)
+  window.addEventListener('pointerup', endDrag)
+  window.addEventListener('pointercancel', endDrag)
+  window.addEventListener('blur', endDrag)
+}
+
+function moveDrag(event) {
+  const slider = sliderRef.value
+  if (!drag || event.pointerId !== drag.pointerId || !slider) return
+  if (event.buttons !== 1) return endDrag()
+  const distance = event.clientX - drag.startX
+  if (!suppressClick && Math.abs(distance) < 6) return
+  if (!suppressClick) {
+    suppressClick = true
+    // Disable snapping synchronously before changing scrollLeft.
+    slider.classList.add('is-dragging')
+    slider.setPointerCapture(event.pointerId)
+  }
+  event.preventDefault()
+  slider.scrollLeft = drag.scrollLeft - distance
+}
+
+function endDrag(event) {
+  if (event?.pointerId !== undefined && event.pointerId !== drag?.pointerId) return
+  const slider = sliderRef.value
+  if (drag && slider?.hasPointerCapture(drag.pointerId)) {
+    slider.releasePointerCapture(drag.pointerId)
+  }
+  drag = null
+  slider?.classList.remove('is-dragging')
+  window.removeEventListener('pointermove', moveDrag)
+  window.removeEventListener('pointerup', endDrag)
+  window.removeEventListener('pointercancel', endDrag)
+  window.removeEventListener('blur', endDrag)
+  updateNavigation()
+}
+
+function preventDragClick(event) {
+  // Keyboard activation has detail === 0 and must remain available.
+  if (!suppressClick || event.detail === 0) return
+  event.preventDefault()
+  event.stopPropagation()
+  suppressClick = false
+}
 
 const skills = computed(() => [...new Set(Object.values(technicalExpertise.value ?? {}).flat())])
 const activeId = computed(() => hoveredId.value ?? focusedId.value ?? selectedId.value)
@@ -75,6 +129,7 @@ function selectProject(project) {
   loadDetails(project)
 }
 function focusProject(event, project) {
+  if (drag && suppressClick) return
   if (event.type === 'mouseenter') hoveredId.value = project.id
   else focusedId.value = project.id
   loadDetails(project)
@@ -108,6 +163,7 @@ onMounted(() => {
   if (sliderRef.value) resizeObserver.observe(sliderRef.value)
 })
 onBeforeUnmount(() => {
+  endDrag()
   controller.abort()
   resizeObserver?.disconnect()
 })
@@ -191,6 +247,10 @@ onBeforeUnmount(() => {
       role="region"
       aria-roledescription="Karussell"
       aria-label="GitHub-Projekte"
+      @pointerdown="startDrag"
+      @lostpointercapture="endDrag"
+      @click.capture="preventDragClick"
+      @dragstart.prevent
       @scroll.passive="updateNavigation"
       @keydown.left.prevent="slide(-1)"
       @keydown.right.prevent="slide(1)"
@@ -249,7 +309,7 @@ onBeforeUnmount(() => {
       <span
         >{{ activeIndex >= 0 ? `${String(activeIndex + 1).padStart(2, '0')} / ` : ''
         }}{{ projects.length }} Projekte</span
-      ><span>Scrollen oder Pfeile verwenden →</span>
+      ><span>Ziehen, wischen oder Pfeile verwenden ↔</span>
     </footer>
     <div class="spacer" aria-hidden="true"></div>
     <RouterLink to="/" class="btn project-btn"> Zur Startseite &nbsp; → </RouterLink>
@@ -382,6 +442,8 @@ onBeforeUnmount(() => {
   cursor: default;
 }
 .project-slider {
+  cursor: grab;
+  user-select: none;
   display: flex;
   gap: 20px;
   overflow-x: auto;
@@ -390,6 +452,14 @@ onBeforeUnmount(() => {
   scrollbar-color: #315864 transparent;
   padding: 6px 2px 16px;
   align-items: flex-start;
+}
+.project-slider.is-dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+.project-slider.is-dragging,
+.project-slider.is-dragging * {
+  cursor: grabbing;
 }
 .project-card {
   flex: 0 0 76%;
@@ -415,7 +485,7 @@ onBeforeUnmount(() => {
   border: 0;
   color: inherit;
   background: none;
-  cursor: pointer;
+  cursor: grab;
   font: inherit;
 }
 .project-top,
