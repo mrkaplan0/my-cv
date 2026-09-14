@@ -75,7 +75,7 @@ export async function getProjectTechnologies(repo, signal) {
           if (/^\s*flutter\s*:/m.test(text)) technologies.add('Flutter')
           if (/^\s*(?:firebase_core|cloud_firestore|firebase_auth)\s*:/m.test(text))
             technologies.add('Firebase')
-          if (/^\s*django(?:\s|[<>=!~\[]|$)/im.test(text)) technologies.add('Django')
+          if (/^\s*django(?:\s|[<>=!~]|\[|$)/im.test(text)) technologies.add('Django')
         }
       }),
     )
