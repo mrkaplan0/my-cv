@@ -22,6 +22,9 @@ onUnmounted(() => {
       <div v-if="showIntroduction" key="introduction" class="text-content">
         <p class="name">Ömer Kaplan</p>
         <p class="author">Full-Stack Developer</p>
+        <RouterLink v-if="showIntroduction" to="/about" class="btn about-btn">
+          Über mich &nbsp; →
+        </RouterLink>
       </div>
       <div v-else key="quote" class="text-content">
         <p>Es ist nicht genug zu wissen, man muss auch anwenden.</p>
@@ -30,11 +33,6 @@ onUnmounted(() => {
       </div>
     </Transition>
   </div>
-  <Transition name="fade-slide">
-    <RouterLink v-if="showIntroduction" to="/about" class="btn about-btn">
-      Über mich &nbsp; →
-    </RouterLink>
-  </Transition>
 </template>
 
 <style scoped>
