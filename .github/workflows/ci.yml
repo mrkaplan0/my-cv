@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: Build and quality checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Repository
+        uses: actions/checkout@v6
+
+      - name: install Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: install dependency
+        run: npm ci
+
+      - name: check Oxlint
+        run: npx oxlint .
+
+      - name: check ESLint
+        run: npx eslint .
+
+      - name: Production build
+        run: npm run build
