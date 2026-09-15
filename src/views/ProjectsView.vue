@@ -1,4 +1,4 @@
-﻿<script setup>
+<script setup>
 import { computed, nextTick, onMounted, onBeforeUnmount, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useApiStore } from '@/stores/apiStore'
@@ -309,47 +309,44 @@ onBeforeUnmount(() => {
       <span
         >{{ activeIndex >= 0 ? `${String(activeIndex + 1).padStart(2, '0')} / ` : ''
         }}{{ projects.length }} Projekte</span
-      ><span>Ziehen, wischen oder Pfeile verwenden ↔</span>
+      >
     </footer>
     <div class="spacer" aria-hidden="true"></div>
-    <RouterLink to="/" class="btn project-btn"> Zur Startseite &nbsp; → </RouterLink>
+    <RouterLink to="/contact" class="btn project-btn"> Kontakt &nbsp; → </RouterLink>
     <div class="spacer" aria-hidden="true"></div>
   </div>
 </template>
 
 <style scoped>
 .projects-page {
-  --accent: #80e5d0;
-  --muted: #acc0c9;
-  --line: rgb(187 221 232 / 16%);
   min-width: 0;
   width: 100%;
-  color: #f1f7fa;
+  color: var(--color-text-on-dark);
 }
 .page-title {
   font-size: clamp(1rem, 2.3vw, 1.75rem);
 }
 .eyebrow {
-  color: var(--accent);
+  color: var(--color-accent);
   font-size: 0.65rem;
   letter-spacing: 0.2em;
 }
 
 .projects-intro > p:not(.eyebrow) {
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-size: 0.9rem;
 }
 .projects-intro > a {
   display: inline-block;
   margin-top: 1rem;
-  color: var(--accent);
+  color: var(--color-accent);
   font-size: 0.75rem;
   text-decoration: none;
 }
 .technology-panel {
   margin-top: 2rem;
   padding: 1.5rem;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 16px;
   background: rgb(5 24 34 / 60%);
 }
@@ -367,12 +364,12 @@ onBeforeUnmount(() => {
 .section-top > span {
   font-family: monospace;
   font-size: 0.7rem;
-  color: var(--accent);
+  color: var(--color-accent);
   overflow-wrap: anywhere;
 }
 .hint {
   margin-top: 0.5rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-size: 0.7rem;
 }
 .technology-tags {
@@ -386,7 +383,7 @@ onBeforeUnmount(() => {
   align-items: center;
   gap: 0.4rem;
   padding: 0.35rem 0.65rem;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   background: rgb(201 230 238 / 3%);
   border-radius: 6px;
   color: #9aaeb8;
@@ -405,23 +402,23 @@ onBeforeUnmount(() => {
   border-radius: 50%;
 }
 .technology-tag.is-active {
-  color: var(--accent);
-  background: rgb(128 229 208 / 12%);
-  border-color: rgb(128 229 208 / 65%);
-  box-shadow: 0 0 16px rgb(128 229 208 / 8%);
+  color: var(--color-accent);
+  background: rgb(var(--color-accent-rgb) / 12%);
+  border-color: rgb(var(--color-accent-rgb) / 65%);
+  box-shadow: 0 0 16px rgb(var(--color-accent-rgb) / 8%);
 }
 .technology-status {
   min-height: 2.5em;
   margin-top: 1rem;
   font-size: 0.65rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 .carousel-heading {
   margin: 2.5rem 0 1rem;
 }
 .count {
   margin-left: 0.5rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-size: 0.75rem;
 }
 .slider-controls {
@@ -430,11 +427,11 @@ onBeforeUnmount(() => {
 }
 .slider-controls button,
 .state button {
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 8px;
   padding: 0.5rem 0.9rem;
   background: #0c2330;
-  color: var(--accent);
+  color: var(--color-accent);
   cursor: pointer;
 }
 .slider-controls button:disabled {
@@ -464,7 +461,7 @@ onBeforeUnmount(() => {
 .project-card {
   flex: 0 0 76%;
   min-width: 0;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 18px;
   background: linear-gradient(145deg, #102d3a, #06151f);
   overflow: hidden;
@@ -474,7 +471,7 @@ onBeforeUnmount(() => {
     box-shadow 0.3s;
 }
 .project-card.is-active {
-  border-color: rgb(128 229 208 / 60%);
+  border-color: rgb(var(--color-accent-rgb) / 60%);
   box-shadow: 0 8px 30px rgb(0 0 0 / 18%);
 }
 .project-select {
@@ -494,7 +491,7 @@ onBeforeUnmount(() => {
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-size: 0.65rem;
 }
 .project-top {
@@ -511,7 +508,7 @@ onBeforeUnmount(() => {
   position: absolute;
   width: 130px;
   height: 130px;
-  border: 1px solid rgb(128 229 208 / 20%);
+  border: 1px solid rgb(var(--color-accent-rgb) / 20%);
   border-radius: 50%;
   transform: rotate(-30deg) scaleX(1.6);
   transition: transform 0.8s;
@@ -520,13 +517,13 @@ onBeforeUnmount(() => {
   content: '';
   position: absolute;
   inset: 15px;
-  border: 1px dashed rgb(128 229 208 / 15%);
+  border: 1px dashed rgb(var(--color-accent-rgb) / 15%);
   border-radius: inherit;
 }
 .code-symbol {
   font: 2.8rem monospace;
-  color: var(--accent);
-  text-shadow: 0 0 30px rgb(128 229 208 / 30%);
+  color: var(--color-accent);
+  text-shadow: 0 0 30px rgb(var(--color-accent-rgb) / 30%);
 }
 .is-active .art-ring {
   transform: rotate(30deg) scaleX(1.6);
@@ -540,7 +537,7 @@ onBeforeUnmount(() => {
   letter-spacing: -0.035em;
 }
 .language {
-  color: var(--accent);
+  color: var(--color-accent);
 }
 .project-description {
   display: grid;
@@ -570,9 +567,9 @@ onBeforeUnmount(() => {
   justify-content: space-between;
   margin-inline: 1.5rem;
   padding-block: 1rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--color-border-subtle);
   text-decoration: none;
-  color: var(--accent);
+  color: var(--color-accent);
   font-size: 0.75rem;
 }
 .slider-footer {
@@ -581,19 +578,19 @@ onBeforeUnmount(() => {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 0.75rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-size: 0.65rem;
 }
 .state {
   padding-block: 1rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 .state button {
   margin-top: 0.75rem;
 }
 button:focus-visible,
 a:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--color-accent);
   outline-offset: -3px;
 }
 .sr-only {

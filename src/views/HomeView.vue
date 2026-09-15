@@ -1,4 +1,4 @@
-﻿<script setup>
+<script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
 
@@ -20,16 +20,22 @@ onUnmounted(() => {
   <div class="intro">
     <Transition name="fade-slide" mode="out-in">
       <div v-if="showIntroduction" key="introduction" class="text-content">
-        <p class="name">Ömer Kaplan</p>
-        <p class="author">Full-Stack Developer</p>
-        <RouterLink v-if="showIntroduction" to="/about" class="btn about-btn">
-          Über mich &nbsp; →
-        </RouterLink>
+        <header class="contact-intro text-content">
+          <h2>
+            Ömer Kaplan <br />
+            <span>Full-Stack Developer</span>
+          </h2>
+          <RouterLink v-if="showIntroduction" to="/about" class="btn about-btn">
+            Über mich &nbsp; →
+          </RouterLink>
+        </header>
       </div>
-      <div v-else key="quote" class="text-content">
-        <p>Es ist nicht genug zu wissen, man muss auch anwenden.</p>
-        <p class="author">Johann Wolfgang von Goethe</p>
-        <span class="quotation-mark">"</span>
+      <div v-else key="quote">
+        <header class="contact-intro text-content">
+          <h2>Es ist nicht genug zu wissen, man muss auch<span> anwenden.</span></h2>
+          <p class="author">Johann Wolfgang von Goethe</p>
+          <span class="quotation-mark">"</span>
+        </header>
       </div>
     </Transition>
   </div>
@@ -90,7 +96,22 @@ onUnmounted(() => {
   opacity: 0;
   transform: translateY(-20px);
 }
-
+.contact-intro h2 {
+  margin-block: 1rem 1.5rem;
+  font-size: clamp(2rem, 3.8vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 1.13;
+}
+.contact-intro h2 span {
+  color: var(--color-accent);
+}
+.contact-intro > p:last-child {
+  max-width: 34rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
 @media (max-width: 1120px) {
   .text-content {
     margin-top: 2rem;

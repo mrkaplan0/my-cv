@@ -1,4 +1,4 @@
-﻿<script setup>
+<script setup>
 import { computed, nextTick, onBeforeUnmount, ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 import ProfilePhoto from '@/components/ProfilePhoto.vue'
@@ -13,6 +13,7 @@ const pages = [
   { name: 'about', label: 'Über mich' },
   { name: 'technicalexpertise', label: 'Technische Expertise' },
   { name: 'projects', label: 'Projekte' },
+  { name: 'contact', label: 'Kontakt' },
 ]
 const previousLabel = computed(
   () => pages.find((page) => page.name === previousPage.value?.name)?.label ?? 'Zurück',
@@ -120,7 +121,7 @@ onBeforeUnmount(removeNavigationHook)
   align-items: center;
   justify-content: center;
   min-height: 44px;
-  border: 1px solid rgb(187 221 232 / 20%);
+  border: 1px solid rgb(var(--color-border-rgb) / 20%);
   border-radius: 10px;
   background: #0c2330;
   color: #d5e6eb;
@@ -147,7 +148,7 @@ onBeforeUnmount(removeNavigationHook)
   display: block;
   width: 18px;
   height: 2px;
-  background: #80e5d0;
+  background: var(--color-accent);
   transition:
     transform 0.25s,
     opacity 0.25s;
@@ -167,7 +168,7 @@ nav {
   right: 0;
   width: min(20rem, calc(100vw - 2.5rem));
   padding: 1rem;
-  border: 1px solid rgb(128 229 208 / 25%);
+  border: 1px solid rgb(var(--color-accent-rgb) / 25%);
   border-radius: 16px;
   background: #071c28;
   box-shadow: 0 20px 60px rgb(0 0 0 / 35%);
@@ -191,8 +192,8 @@ nav a {
 }
 nav a:hover,
 nav a.router-link-exact-active {
-  color: #80e5d0;
-  background: rgb(128 229 208 / 10%);
+  color: var(--color-accent);
+  background: rgb(var(--color-accent-rgb) / 10%);
 }
 .menu-number {
   font-family: monospace;
@@ -204,7 +205,7 @@ nav a.router-link-exact-active {
 }
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid #80e5d0;
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
 .menu-backdrop {

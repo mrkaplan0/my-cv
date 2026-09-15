@@ -1,4 +1,4 @@
-﻿<script setup>
+<script setup>
 import { computed, ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useApiStore } from '@/stores/apiStore'
@@ -165,12 +165,9 @@ onBeforeUnmount(() => observer?.disconnect())
 
 <style scoped>
 .technics-page {
-  --accent: #80e5d0;
-  --muted: #acc0c9;
-  --line: rgb(187 221 232 / 16%);
   width: 100%;
   min-width: 0;
-  color: #f1f7fa;
+  color: var(--color-text-on-dark);
 }
 .page-title {
   font-size: clamp(1rem, 2.3vw, 1.75rem);
@@ -190,11 +187,11 @@ onBeforeUnmount(() => observer?.disconnect())
   letter-spacing: -0.055em;
 }
 .expertise-intro h2 span {
-  color: var(--accent);
+  color: var(--color-accent);
 }
 .intro-description {
   max-width: 32rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
   line-height: 1.8;
   font-size: 0.95rem;
 }
@@ -207,7 +204,7 @@ onBeforeUnmount(() => observer?.disconnect())
   flex-direction: column-reverse;
 }
 .stats dt {
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-size: 0.7rem;
 }
 .stats dd {
@@ -228,7 +225,7 @@ onBeforeUnmount(() => observer?.disconnect())
 .intro-decoration span {
   position: absolute;
   inset: 0;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--color-accent);
   border-radius: 50%;
   transform: rotate(-25deg) scaleX(0.55);
 }
@@ -252,7 +249,7 @@ onBeforeUnmount(() => observer?.disconnect())
   letter-spacing: -0.03em;
 }
 .section-heading > span {
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-size: 0.6rem;
   letter-spacing: 0.12em;
 }
@@ -267,7 +264,7 @@ onBeforeUnmount(() => observer?.disconnect())
   min-width: 0;
   padding: clamp(1rem, 2vw, 1.75rem);
   background: linear-gradient(140deg, rgb(15 40 51 / 94%), rgb(4 21 31 / 86%));
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 16px;
   box-shadow: 0 8px 28px rgb(0 0 0 / 8%);
 }
@@ -282,10 +279,10 @@ onBeforeUnmount(() => observer?.disconnect())
   place-items: center;
   width: 2.5rem;
   height: 2.5rem;
-  border: 1px solid rgb(128 229 208 / 20%);
+  border: 1px solid rgb(var(--color-accent-rgb) / 20%);
   border-radius: 10px;
-  color: var(--accent);
-  background: rgb(128 229 208 / 5%);
+  color: var(--color-accent);
+  background: rgb(var(--color-accent-rgb) / 5%);
   font-family: monospace;
   font-size: 1.15rem;
 }
@@ -325,12 +322,12 @@ onBeforeUnmount(() => observer?.disconnect())
   align-items: center;
   margin-top: auto;
   padding-top: 0.9rem;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
+  border-top: 1px solid var(--color-border-subtle);
+  color: var(--color-text-muted);
   font-size: 0.65rem;
 }
 .card-footer span {
-  color: var(--accent);
+  color: var(--color-accent);
   font-size: 1rem;
 }
 .certifications-section {
@@ -346,14 +343,14 @@ onBeforeUnmount(() => observer?.disconnect())
   align-items: center;
   gap: 1rem;
   padding-block: 1.25rem;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 .certificate-year {
   align-self: start;
   padding-top: 0.15rem;
   font-family: monospace;
   font-size: 0.8rem;
-  color: var(--accent);
+  color: var(--color-accent);
 }
 .certificate h3 {
   font-weight: 500;
@@ -362,25 +359,25 @@ onBeforeUnmount(() => observer?.disconnect())
 }
 .certificate p {
   margin-top: 0.25rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-size: 0.75rem;
 }
 .certificate-symbol {
-  color: var(--accent);
+  color: var(--color-accent);
   font-size: 1.5rem;
 }
 
 .state-message {
   margin-block: 2rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 .state-message button {
   margin-top: 0.75rem;
   padding: 0.6rem 1rem;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--color-accent);
   border-radius: 6px;
   background: transparent;
-  color: var(--accent);
+  color: var(--color-accent);
   cursor: pointer;
 }
 .state-message button:focus-visible {
@@ -408,7 +405,7 @@ onBeforeUnmount(() => observer?.disconnect())
 
 @media (hover: hover) {
   .skill-card:hover {
-    border-color: rgb(128 229 208 / 55%);
+    border-color: rgb(var(--color-accent-rgb) / 55%);
     transform: translateY(-4px);
   }
 }
