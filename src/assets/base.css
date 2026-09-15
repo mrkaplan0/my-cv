@@ -1,5 +1,13 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
+  /* Shared portfolio colors, independent of the system color scheme. */
+  --color-accent-rgb: 128 229 208;
+  --color-border-rgb: 187 221 232;
+  --color-accent: rgb(var(--color-accent-rgb));
+  --color-text-muted: #acc0c9;
+  --color-text-on-dark: #f1f7fa;
+  --color-border-subtle: rgb(var(--color-border-rgb) / 16%);
+
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
@@ -11,7 +19,7 @@
   --vt-c-indigo: #2c3e50;
 
   --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgb(128 229 208 / 25%);
+  --vt-c-divider-light-2: rgb(var(--color-accent-rgb) / 25%);
   --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
   --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
 
