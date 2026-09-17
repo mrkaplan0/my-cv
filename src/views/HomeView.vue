@@ -48,7 +48,7 @@ onUnmounted(() => {
 
 .text-content {
   width: 100%;
-  margin-top: 7rem;
+  margin-top: 4rem;
   margin-right: 2rem;
   font-size: 4rem;
   text-align: left;
