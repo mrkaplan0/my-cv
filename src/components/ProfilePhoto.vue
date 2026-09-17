@@ -7,11 +7,13 @@
 
 <style scoped>
 .round {
-  width: 60rem;
-  height: 100vh;
+  width: min(60rem, 100svh);
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  border: clamp(1rem, 3vw, 3rem) solid #000;
   border-radius: 50%;
-  background-color: #010a0f;
-  margin-right: 2rem;
+  background-color: #000;
+  overflow: hidden;
   left: 0;
   top: 0;
   position: absolute;
@@ -19,7 +21,7 @@
   z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: right;
+  justify-content: center;
   transition: transform 1s ease-in-out;
 }
 
@@ -28,32 +30,30 @@
 }
 
 .profile-image {
-  width: 50rem;
-  height: 50rem;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
   object-fit: cover;
   border-radius: 50%;
-  z-index: 1;
-  transform: translateX(-8%);
 }
 
 @media (max-width: 1120px) {
   .round {
     width: 6rem;
-    height: 6rem;
-    border-radius: 50%;
+    border-width: 6px;
     margin: 7rem auto;
-    transform: translateX(0);
-    background-color: #126b97;
-  }
-  .profile-image {
-    width: 6rem;
-    height: 6rem;
-    margin: auto;
     transform: translateX(0);
   }
 
   .round:hover {
     transform: translateX(0);
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .round {
     transition: none;
   }
 }
